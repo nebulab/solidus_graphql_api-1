@@ -1,0 +1,23 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: solidus_dev_support
+    versions:
+    - 2.1.0
+    - 2.4.0
+    - 2.4.2
+    - 2.4.3
+  - dependency-name: pry
+    versions:
+    - 0.14.0
+  - dependency-name: graphql
+    versions:
+    - 1.12.0
+  - dependency-name: simplecov
+    versions:
+    - 0.21.2
