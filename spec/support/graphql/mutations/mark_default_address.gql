@@ -1,9 +1,0 @@
-mutation ($input: MarkDefaultAddressInput!) {
-  markDefaultAddress(input: $input) {
-    user {
-      defaultAddress {
-        id
-      }
-    }
-  }
-}

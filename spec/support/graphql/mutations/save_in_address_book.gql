@@ -2,7 +2,7 @@ mutation ($input: SaveInAddressBookInput!) {
   saveInAddressBook(input: $input) {
     user {
       email
-      defaultAddress {
+      shipAddress {
         address1
         address2
         alternativePhone
