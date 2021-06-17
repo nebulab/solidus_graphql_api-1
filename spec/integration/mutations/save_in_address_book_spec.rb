@@ -6,11 +6,11 @@ RSpec.describe_mutation :save_in_address_book, mutation: :save_in_address_book d
   let(:default) { false }
   let(:country_states_required) { false }
   let(:address) {
-    create(:address, firstname: "Jane", country: create(:country, states_required: country_states_required))
+    create(:address, name: "Jane Von Doe", country: create(:country, states_required: country_states_required))
   }
   let(:address_attributes) {
     {
-      firstname: address.firstname,
+      name: address.name,
       address1: address.address1,
       city: address.city,
       countryId: SolidusGraphqlApi::Schema.id_from_object(address.country, nil, nil),
@@ -43,9 +43,9 @@ RSpec.describe_mutation :save_in_address_book, mutation: :save_in_address_book d
 
     context "when user doesn't have addresses" do
       context "and given attributes are correct" do
-        it { expect(default_address[:firstname]).to eq(address[:firstname]) }
+        it { expect(default_address[:name]).to eq(address[:name]) }
         it { expect(user_addresses.count).to eq 1 }
-        it { expect(user_addresses.first[:firstname]).to eq(address[:firstname]) }
+        it { expect(user_addresses.first[:name]).to eq(address[:name]) }
         it { expect(user_errors).to be_empty }
       end
 
@@ -65,17 +65,17 @@ RSpec.describe_mutation :save_in_address_book, mutation: :save_in_address_book d
       context "and given attributes are correct" do
         it { expect(default_address).to_not be_nil }
         it { expect(user_addresses.count).to eq 3 }
-        it { expect(user_addresses.map{ |address| address[:firstname] }).to include(address[:firstname]) }
+        it { expect(user_addresses.map{ |address| address[:name] }).to include(address[:name]) }
         it { expect(user_errors).to be_empty }
 
         context 'when default false' do
-          it { expect(default_address[:firstname]).to_not eq(address[:firstname]) }
+          it { expect(default_address[:name]).to_not eq(address[:name]) }
         end
 
         context 'when default true' do
           let(:default) { true }
 
-          it { expect(default_address[:firstname]).to eq(address[:firstname]) }
+          it { expect(default_address[:name]).to eq(address[:name]) }
         end
       end
 

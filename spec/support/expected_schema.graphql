@@ -85,9 +85,8 @@ type Address implements Node {
   company: String
   country: Country!
   createdAt: ISO8601DateTime
-  firstname: String!
+  name: String!
   id: ID!
-  lastname: String
   phone: String!
   state: State
   stateName: String
@@ -140,8 +139,7 @@ input AddressInput {
   city: String!
   company: String
   countryId: ID!
-  firstname: String!
-  lastname: String
+  name: String!
   phone: String!
   stateId: ID
   stateName: String

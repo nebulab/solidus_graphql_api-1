@@ -13,8 +13,7 @@ mutation ($input: SaveInAddressBookInput!) {
           name
         }
         createdAt
-        firstname
-        lastname
+        name
         phone
         stateName
         state {
@@ -36,8 +35,7 @@ mutation ($input: SaveInAddressBookInput!) {
             name
           }
           createdAt
-          firstname
-          lastname
+          name
           phone
           stateName
           state {

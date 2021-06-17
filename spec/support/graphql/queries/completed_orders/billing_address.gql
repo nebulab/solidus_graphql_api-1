@@ -21,8 +21,7 @@ query {
         }
         id
         createdAt
-        firstname
-        lastname
+        name
         phone
         state {
           id

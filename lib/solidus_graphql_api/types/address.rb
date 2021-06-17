@@ -12,8 +12,7 @@ module SolidusGraphqlApi
       field :company, String, null: true
       field :country, Country, null: false
       field :created_at, GraphQL::Types::ISO8601DateTime, null: true
-      field :firstname, String, null: false
-      field :lastname, String, null: true
+      field :name, String, null: false
       field :phone, String, null: false
       field :state_name, String, null: true
       field :state, State, null: true

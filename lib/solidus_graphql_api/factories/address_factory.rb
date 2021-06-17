@@ -2,7 +2,6 @@
 
 FactoryBot.modify do
   factory :address do
-    firstname { 'John' }
-    lastname { nil }
+    name { 'John Von Doe' }
   end
 end
