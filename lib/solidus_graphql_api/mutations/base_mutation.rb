@@ -33,10 +33,10 @@ module SolidusGraphqlApi
       def user_errors(*path, errors)
         return [] if errors.empty?
 
-        errors.map do |attribute, message|
+        errors.map do |error|
           {
-            path: ["input", *path].concat(attribute.to_s.camelize(:lower).split('.')),
-            message: message,
+            path: ["input", *path].concat(error.attribute.to_s.camelize(:lower).split('.')),
+            message: error.message,
           }
         end
       end
