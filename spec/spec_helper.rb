@@ -32,6 +32,14 @@ RSpec.configure do |config|
 
   config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = false
+
+  if defined?(ActiveStorage::Current)
+    config.before(:all) do
+      ActiveStorage::Current.host = 'https://www.example.com'
+    end
+  end
+
+
   config.include Helpers::Graphql
   config.include Matchers::Graphql
 
