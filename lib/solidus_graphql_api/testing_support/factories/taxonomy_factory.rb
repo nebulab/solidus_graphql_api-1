@@ -25,7 +25,11 @@ FactoryBot.modify do
 
     trait :with_root_icon do
       after :create do |taxonomy|
-        taxonomy.root.update(icon: Spree::Core::Engine.root.join('lib', 'spree', 'testing_support', 'fixtures', 'blank.jpg').open)
+        taxonomy.root.update(icon: Spree::Core::Engine.root.join('lib',
+                                                                 'spree',
+                                                                 'testing_support',
+                                                                 'fixtures',
+                                                                 'blank.jpg').open)
       end
     end
   end

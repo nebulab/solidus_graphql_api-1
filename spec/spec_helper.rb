@@ -39,7 +39,6 @@ RSpec.configure do |config|
     end
   end
 
-
   config.include Helpers::Graphql
   config.include Matchers::Graphql
 

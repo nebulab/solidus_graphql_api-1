@@ -17,9 +17,11 @@ RSpec.describe_query :taxonomies do
         taxon.update(parent: brand_taxonomy.root)
       end
 
-      it { is_expected.to match_response(:taxonomies).with_args(brand_url: brand_taxonomy.taxons.first.icon.url,
-                                                                category_url: category_taxonomy.taxons.first.icon.url,
-                                                                taxon_url: taxon.icon.url) }
+      it {
+        expect(subject).to match_response(:taxonomies).with_args(brand_url: brand_taxonomy.taxons.first.icon.url,
+                                                                 category_url: category_taxonomy.taxons.first.icon.url,
+                                                                 taxon_url: taxon.icon.url)
+      }
     end
   end
 end

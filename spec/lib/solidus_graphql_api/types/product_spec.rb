@@ -34,7 +34,9 @@ RSpec.describe SolidusGraphqlApi::Types::Product do
 
   describe '#product_properties' do
     before do
-      allow(SolidusGraphqlApi::Queries::Product::ProductPropertiesQuery).to receive(:new).with(product: product).and_return(query_object)
+      allow(SolidusGraphqlApi::Queries::Product::ProductPropertiesQuery).
+        to receive(:new).with(product: product).
+        and_return(query_object)
     end
 
     after { subject.product_properties }

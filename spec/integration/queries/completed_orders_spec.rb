@@ -12,7 +12,7 @@ RSpec.describe_query :completed_orders do
     end
 
     context 'when there are some completed orders' do
-      let(:order_1) do
+      let(:order1) do
         create(
           :completed_order_with_pending_payment,
           id: 1,
@@ -21,7 +21,7 @@ RSpec.describe_query :completed_orders do
           number: 'fake order number 1'
         )
       end
-      let(:order_2) do
+      let(:order2) do
         create(
           :completed_order_with_pending_payment,
           id: 2,
@@ -30,7 +30,7 @@ RSpec.describe_query :completed_orders do
           number: 'fake order number 2'
         )
       end
-      let!(:completed_orders) { [order_1, order_2] }
+      let!(:completed_orders) { [order1, order2] }
 
       it { is_expected.to match_response('completed_orders') }
     end
@@ -44,7 +44,7 @@ RSpec.describe_query :completed_orders do
       let(:ship_address_2_state) { create :state, id: 3, country: ship_address_2_country }
       let(:bill_address_2_country) { create :country, id: 4 }
       let(:bill_address_2_state) { create :state, id: 4, country: bill_address_2_country }
-      let(:ship_address_1) do
+      let(:ship_address1) do
         create(
           :address,
           id: 1,
@@ -54,7 +54,7 @@ RSpec.describe_query :completed_orders do
           state: ship_address_1_state
         )
       end
-      let(:bill_address_1) do
+      let(:bill_address1) do
         create(
           :address,
           id: 2,
@@ -64,7 +64,7 @@ RSpec.describe_query :completed_orders do
           state: bill_address_1_state
         )
       end
-      let(:ship_address_2) do
+      let(:ship_address2) do
         create(
           :address,
           id: 3,
@@ -74,7 +74,7 @@ RSpec.describe_query :completed_orders do
           state: ship_address_2_state
         )
       end
-      let(:bill_address_2) do
+      let(:bill_address2) do
         create(
           :address,
           id: 4,
@@ -84,25 +84,25 @@ RSpec.describe_query :completed_orders do
           state: bill_address_2_state
         )
       end
-      let(:order_1) do
+      let(:order1) do
         create(
           :completed_order_with_pending_payment,
           id: 1,
           user: current_user,
-          ship_address: ship_address_1,
-          bill_address: bill_address_1
+          ship_address: ship_address1,
+          bill_address: bill_address1
         )
       end
-      let(:order_2) do
+      let(:order2) do
         create(
           :completed_order_with_pending_payment,
           id: 2,
           user: current_user,
-          ship_address: ship_address_2,
-          bill_address: bill_address_2
+          ship_address: ship_address2,
+          bill_address: bill_address2
         )
       end
-      let!(:completed_orders) { [order_1, order_2] }
+      let!(:completed_orders) { [order1, order2] }
 
       connection_field :shipping_address, query: 'completed_orders/shipping_address' do
         it { is_expected.to match_response('completed_orders/shipping_address') }
@@ -127,7 +127,9 @@ RSpec.describe_query :completed_orders do
       end
 
       it {
-        expect(subject).to match_response('completed_orders/available_payment_methods').with_args(available_payment_methods: order.available_payment_methods)
+        expect(subject).
+          to match_response('completed_orders/available_payment_methods').
+          with_args(available_payment_methods: order.available_payment_methods)
       }
     end
 

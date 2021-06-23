@@ -67,10 +67,8 @@ RSpec.describe_mutation :add_addresses_to_checkout, mutation: :add_addresses_to_
         it { expect(response_order[:number]).to eq(current_order.number) }
 
         if Gem::Requirement.new('>= 2.11.0.alpha').satisfied_by?(Spree.solidus_gem_version)
-          it { expect(user_errors.first[:path]).to eq(["input", "order", "billAddress", "name"]) }
-        else
-          it { expect(user_errors.first[:path]).to eq(["input", "order", "billAddress", "name"]) }
         end
+        it { expect(user_errors.first[:path]).to eq(["input", "order", "billAddress", "name"]) }
 
         it { expect(user_errors.first[:message]).to eq("can't be blank") }
         it { is_expected.to_not have_key(:errors) }

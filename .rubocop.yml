@@ -57,3 +57,6 @@ Rails/RakeEnvironment:
 
 Rails/HttpStatus:
   Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
