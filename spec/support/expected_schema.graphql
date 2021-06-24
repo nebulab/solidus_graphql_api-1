@@ -85,8 +85,8 @@ type Address implements Node {
   company: String
   country: Country!
   createdAt: ISO8601DateTime
-  name: String!
   id: ID!
+  name: String!
   phone: String!
   state: State
   stateName: String
@@ -1939,7 +1939,6 @@ type User implements Node {
   billAddress: Address
   createdAt: ISO8601DateTime
   currentSignInAt: ISO8601DateTime
-  shipAddress: Address
   email: String!
   id: ID!
   lastSignInAt: ISO8601DateTime

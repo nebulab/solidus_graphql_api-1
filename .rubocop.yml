@@ -60,3 +60,6 @@ Rails/HttpStatus:
 
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
+
+Lint/ConstantDefinitionInBlock:
+  Enabled: false
