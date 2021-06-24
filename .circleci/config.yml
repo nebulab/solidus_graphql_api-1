@@ -41,7 +41,11 @@ jobs:
   run-specs-with-postgres:
     executor: solidusio_extensions/postgres
     steps:
-      - solidusio_extensions/run-tests
+      - checkout
+      - solidusio_extensions/run-tests-solidus-current
+      - solidusio_extensions/store-test-results
+      - solidusio_extensions/run-tests-solidus-master
+      - solidusio_extensions/store-test-results
       - run:
           name: Install & Upload test coverage to Code Climate
           command: |
@@ -53,7 +57,12 @@ jobs:
   run-specs-with-mysql:
     executor: solidusio_extensions/mysql
     steps:
-      - solidusio_extensions/run-tests
+      - checkout
+      - solidusio_extensions/run-tests-solidus-current
+      - solidusio_extensions/store-test-results
+      - solidusio_extensions/run-tests-solidus-master
+      - solidusio_extensions/store-test-results
+
 
   schema-breaking-change-detection:
     docker:
