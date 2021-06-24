@@ -7,6 +7,10 @@
 
 Provides a [graphql](https://graphql.org/) api for the [Solidus](https://github.com/solidusio/solidus) ecommerce framework.
 
+## Supported Versions
+
+- Solidus 2.11.x
+- Solidus 3.x
 ## Installation
 
 Add solidus_graphql_api to your Gemfile:
