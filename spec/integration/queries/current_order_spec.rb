@@ -10,6 +10,9 @@ RSpec.describe_query :currentOrder, query: :current_order, freeze_date: true do
   let(:variant_sku) { order.line_items.first.variant.sku }
 
   field :currentOrder do
-    it { is_expected.to match_response(:current_order).with_args(shipment_number: shipment_number, variant_sku: variant_sku) }
+    it {
+      expect(subject).to match_response(:current_order).with_args(shipment_number: shipment_number,
+                                                                  variant_sku: variant_sku)
+    }
   end
 end

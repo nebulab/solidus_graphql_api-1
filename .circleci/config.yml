@@ -41,7 +41,11 @@ jobs:
   run-specs-with-postgres:
     executor: solidusio_extensions/postgres
     steps:
-      - solidusio_extensions/run-tests
+      - checkout
+      - solidusio_extensions/run-tests-solidus-current
+      - solidusio_extensions/store-test-results
+      - solidusio_extensions/run-tests-solidus-master
+      - solidusio_extensions/store-test-results
       - run:
           name: Install & Upload test coverage to Code Climate
           command: |
@@ -53,7 +57,12 @@ jobs:
   run-specs-with-mysql:
     executor: solidusio_extensions/mysql
     steps:
-      - solidusio_extensions/run-tests
+      - checkout
+      - solidusio_extensions/run-tests-solidus-current
+      - solidusio_extensions/store-test-results
+      - solidusio_extensions/run-tests-solidus-master
+      - solidusio_extensions/store-test-results
+
 
   schema-breaking-change-detection:
     docker:
@@ -66,6 +75,11 @@ jobs:
       - run:
           name: Schema Breaking Change detection
           command: rm Gemfile && schema_comparator verify "`git show origin/master:schema.graphql`" schema.graphql
+
+  lint-code:
+    executor: solidusio_extensions/sqlite-memory
+    steps:
+      - solidusio_extensions/lint-code
 
 workflows:
   "Run specs on supported Solidus versions":
@@ -80,6 +94,8 @@ workflows:
       - run-specs-with-mysql:
           requires:
             - verify-schema-updated
+      - lint-code
+
   "Weekly run specs against master":
     triggers:
       - schedule:

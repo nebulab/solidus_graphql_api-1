@@ -1,0 +1,9 @@
+mutation ($input: MarkDefaultShipAddressInput!) {
+  markDefaultShipAddress(input: $input) {
+    user {
+      shipAddress {
+        id
+      }
+    }
+  }
+}

@@ -31,16 +31,16 @@ RSpec.describe_mutation :remove_from_address_book, mutation: :remove_from_addres
       it { expect(user_addresses.map{ |address| address[:id] }).to_not include(address.id) }
 
       describe 'default address' do
-        let(:default_address) { subject[:data][:removeFromAddressBook][:user][:defaultAddress] }
+        let(:ship_address) { subject[:data][:removeFromAddressBook][:user][:shipAddress] }
 
         context "when address is the default" do
-          before { current_user.mark_default_address(address.id) }
+          before { current_user.mark_default_ship_address(address.id) }
 
-          it { expect(default_address).to be_nil }
+          it { expect(ship_address).to be_nil }
         end
 
         context "when address isn't the default" do
-          it { expect(default_address[:id]).to_not eq address.id }
+          it { expect(ship_address[:id]).to_not eq address.id }
         end
       end
     end

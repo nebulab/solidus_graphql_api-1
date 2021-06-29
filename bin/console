@@ -10,8 +10,8 @@ require "solidus_graphql_api"
 $LOAD_PATH.unshift(*Dir["#{__dir__}/../app/*"])
 
 # (If you use this, don't forget to add pry to your Gemfile!)
-require "pry"
-Pry.start
+# require "pry"
+# Pry.start
 
 require "irb"
 IRB.start(__FILE__)

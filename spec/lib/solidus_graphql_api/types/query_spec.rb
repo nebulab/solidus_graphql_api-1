@@ -24,7 +24,9 @@ RSpec.describe SolidusGraphqlApi::Types::Query do
 
     let(:slug) { 'slug' }
 
-    before { allow(SolidusGraphqlApi::Queries::ProductBySlugQuery).to receive(:new).with(no_args).and_return(query_object) }
+    before {
+      allow(SolidusGraphqlApi::Queries::ProductBySlugQuery).to receive(:new).with(no_args).and_return(query_object)
+    }
 
     after { subject.product_by_slug(slug: slug) }
 

@@ -27,9 +27,10 @@ module SolidusGraphqlApi
 
       def self.decode_array(array, ctx)
         array.map do |value|
-          if value.is_a?(Hash) || value.is_a?(ActionController::Parameters)
+          case value
+          when Hash, ActionController::Parameters
             coerce_input(value, ctx)
-          elsif value.is_a?(String)
+          when String
             decode(value)
           else
             value

@@ -11,7 +11,7 @@ module SolidusGraphqlApi
         end
 
         def call
-          SolidusGraphqlApi::BatchLoader.for(variant, :default_price)
+          variant.default_price
         end
       end
     end

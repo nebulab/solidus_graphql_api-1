@@ -5,10 +5,7 @@ require 'graphql-docs'
 
 SolidusDevSupport::RakeTasks.install
 
-require 'rubocop/rake_task'
-RuboCop::RakeTask.new
-
-task default: %w[rubocop extension:specs]
+task default: 'extension:specs'
 
 namespace :schema do
   desc 'Generates documentation from schema.graphql'

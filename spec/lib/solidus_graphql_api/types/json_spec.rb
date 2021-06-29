@@ -37,7 +37,8 @@ RSpec.describe SolidusGraphqlApi::Types::Json do
         hash_array: [
           {
             ids_array: [
-              'U3ByZWU6OlByb21vdGlvbkFjdGlvbi02', 'U3ByZWU6OlByb21vdGlvbkFjdGlvbi04' # Spree::PromotionAction-6, Spree::PromotionAction-8
+              'U3ByZWU6OlByb21vdGlvbkFjdGlvbi02',
+              'U3ByZWU6OlByb21vdGlvbkFjdGlvbi04' # Spree::PromotionAction-6, Spree::PromotionAction-8
             ],
             ids_hash: {
               id: 'U3ByZWU6OkFkanVzdG1lbnQtNQ==', # Spree::Adjustment-5

@@ -18,9 +18,8 @@ query {
           updatedAt
         }
         createdAt
-        firstname
+        name
         id
-        lastname
         phone
         state {
           name
@@ -50,9 +49,8 @@ query {
         updatedAt
       }
       createdAt
-      firstname
+      name
       id
-      lastname
       phone
       state {
         name
@@ -66,7 +64,7 @@ query {
     }
     createdAt
     currentSignInAt
-    defaultAddress {
+    shipAddress {
       address1
       address2
       alternativePhone
@@ -83,9 +81,8 @@ query {
         updatedAt
       }
       createdAt
-      firstname
+      name
       id
-      lastname
       phone
       state {
         name
@@ -118,9 +115,8 @@ query {
         updatedAt
       }
       createdAt
-      firstname
+      name
       id
-      lastname
       phone
       state {
         name
@@ -159,9 +155,8 @@ query {
                 updatedAt
               }
               createdAt
-              firstname
+              name
               id
-              lastname
               phone
               state {
                 name

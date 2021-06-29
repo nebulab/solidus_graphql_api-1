@@ -4,9 +4,6 @@ require:
 Style/ExpandPathArguments:
   Enabled: false
 
-Metrics/LineLength:
-  Enabled: false
-
 Performance/RegexpMatch:
   Enabled: false
 
@@ -52,11 +49,17 @@ RSpec/LetSetup:
 RSpec/HookArgument:
   Enabled: false
 
-Layout/AlignArguments:
+Layout/ArgumentAlignment:
   Enabled: false
 
 Rails/RakeEnvironment:
   Enabled: false
 
 Rails/HttpStatus:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+Lint/ConstantDefinitionInBlock:
   Enabled: false

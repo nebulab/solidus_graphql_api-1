@@ -13,7 +13,7 @@ module SolidusGraphqlApi
         field :order, Types::Order, null: true
         field :errors, [Types::UserError], null: false
 
-        def resolve(payment_method:, amount: nil, source:)
+        def resolve(payment_method:, source:, amount: nil)
           current_order.update(state: :payment)
 
           update_params = {

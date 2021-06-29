@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'spree/core'
-require 'solidus_graphql_api'
+require 'solidus_core'
+require 'solidus_support'
 
 module SolidusGraphqlApi
   class Engine < Rails::Engine

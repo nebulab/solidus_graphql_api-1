@@ -1,12 +1,16 @@
+# SolidusGraphqlApi
+
 [![Maintainability](https://api.codeclimate.com/v1/badges/8ea7739ad6726ad8cfa7/maintainability)](https://codeclimate.com/github/solidusio-contrib/solidus_graphql_api/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/8ea7739ad6726ad8cfa7/test_coverage)](https://codeclimate.com/github/solidusio-contrib/solidus_graphql_api/test_coverage)
-[![CircleCI](https://circleci.com/gh/solidusio-contrib/solidus_graphql_api.svg?style=svg)](https://circleci.com/gh/solidusio-contrib/solidus_graphql_api)
+[![CircleCI](https://circleci.com/gh/solidusio-contrib/solidus_graphql_api.svg?style=shield)](https://circleci.com/gh/solidusio-contrib/solidus_graphql_api)
 [![Gem Version](https://badge.fury.io/rb/solidus_graphql_api.svg)](https://badge.fury.io/rb/solidus_graphql_api)
-
-# SolidusGraphqlApi
 
 Provides a [graphql](https://graphql.org/) api for the [Solidus](https://github.com/solidusio/solidus) ecommerce framework.
 
+## Supported Versions
+
+- Solidus 2.11.x
+- Solidus 3.x
 ## Installation
 
 Add solidus_graphql_api to your Gemfile:
@@ -15,10 +19,10 @@ Add solidus_graphql_api to your Gemfile:
 gem 'solidus_graphql_api'
 ```
 
-Bundle your dependencies:
+Bundle your dependencies and run the installation generator:
 
 ```shell
-bundle
+bin/rails generate solidus_graphql_api:install
 ```
 
 Unlike the REST API which has a variety of endpoints, the GraphQL API has a
@@ -237,14 +241,21 @@ $ bin/rails server
 Use Ctrl-C to stop
 ```
 
-### Releasing new versions
+### Updating the changelog
 
-Your new extension version can be released using `gem-release` like this:
+Before and after releases the changelog should be updated to reflect the up-to-date status of
+the project:
 
 ```shell
-bundle exec gem bump -v VERSION --tag --push --remote upstream && gem release
+bin/rake changelog
+git add CHANGELOG.md
+git commit -m "Update the changelog"
 ```
+
+### Releasing new versions
+
+Please refer to the dedicated [page](https://github.com/solidusio/solidus/wiki/How-to-release-extensions) on Solidus wiki.
 
 ## License
 
-Copyright (c) 2020 Nebulab, released under the New BSD License.
+Copyright (c) 2020-2021 Nebulab, released under the New BSD License.

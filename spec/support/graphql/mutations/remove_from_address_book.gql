@@ -1,7 +1,7 @@
 mutation ($input: RemoveFromAddressBookInput!) {
   removeFromAddressBook(input: $input) {
     user {
-      defaultAddress {
+      shipAddress {
         id
       }
       addresses {

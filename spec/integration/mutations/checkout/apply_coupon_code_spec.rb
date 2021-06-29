@@ -54,7 +54,9 @@ RSpec.describe_mutation :apply_coupon_code, mutation: :apply_coupon_code do
       context "and the given coupon code is applicable" do
         let(:flat_rate_discount) { 10.0 }
 
-        before { create(:promotion, :with_line_item_adjustment, adjustment_rate: flat_rate_discount, code: coupon_code) }
+        before {
+          create(:promotion, :with_line_item_adjustment, adjustment_rate: flat_rate_discount, code: coupon_code)
+        }
 
         it { expect(response_order[:adjustmentTotal]).to eq((-flat_rate_discount).to_s) }
         it { expect(response_order[:number]).to eq(current_order.number) }

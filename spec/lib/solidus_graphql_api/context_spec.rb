@@ -7,7 +7,10 @@ RSpec.describe SolidusGraphqlApi::Context do
 
   let(:headers) do
     headers_hash = {}
-    headers_hash['Authorization'] = "Bearer #{authorization_token}" if defined?(authorization_token) && authorization_token
+    if defined?(authorization_token) && authorization_token
+      headers_hash['Authorization'] =
+        "Bearer #{authorization_token}"
+    end
     headers_hash['X-Spree-Order-Token'] = order_token if defined?(order_token) && order_token
     headers_hash
   end
@@ -171,8 +174,12 @@ RSpec.describe SolidusGraphqlApi::Context do
       end
 
       context 'when the current user has many incompleted orders in the current store' do
-        let!(:first_created_order) { create :order, user: current_user, store: current_store, created_at: Time.zone.yesterday }
-        let!(:last_created_order) { create :order, user: current_user, store: current_store, created_at: Time.zone.today }
+        let!(:first_created_order) {
+          create :order, user: current_user, store: current_store, created_at: Time.zone.yesterday
+        }
+        let!(:last_created_order) {
+          create :order, user: current_user, store: current_store, created_at: Time.zone.today
+        }
 
         it { is_expected.to eq last_created_order }
       end

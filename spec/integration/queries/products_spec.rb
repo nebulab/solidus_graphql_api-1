@@ -24,7 +24,10 @@ RSpec.describe_query :products, query: :products, freeze_date: true do
       let!(:solidus_tote) { create(:product, name: 'Solidus Tote', id: 4, price: 15.99) }
 
       context 'when no query is passed' do
-        it { is_expected.to match_array([{ id: solidus_t_shirt.id }, { id: ruby_mug.id }, { id: solidus_mug.id }, { id: solidus_tote.id }]) }
+        it {
+          expect(subject).to match_array([{ id: solidus_t_shirt.id }, { id: ruby_mug.id }, { id: solidus_mug.id },
+                                          { id: solidus_tote.id }])
+        }
       end
 
       context 'when a query is passed' do

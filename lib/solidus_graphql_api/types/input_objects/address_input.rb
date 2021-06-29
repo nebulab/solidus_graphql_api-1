@@ -12,8 +12,7 @@ module SolidusGraphqlApi
         argument :city, String, required: true
         argument :company, String, required: false
         argument :country_id, ID, required: true, loads: Types::Country
-        argument :firstname, String, required: true
-        argument :lastname, String, required: false
+        argument :name, String, required: true
         argument :phone, String, required: true
         argument :state_name, String, required: false
         argument :state_id, ID, required: false, loads: Types::State

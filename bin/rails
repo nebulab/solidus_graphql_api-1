@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-# frozen_string_literal: true
-
 if %w[g generate].include? ARGV.first
   exec "#{__dir__}/rails-engine", *ARGV
 else

@@ -19,13 +19,13 @@ RSpec.describe_mutation :add_addresses_to_checkout, mutation: :add_addresses_to_
     address[:countryId] = country_id
     address.transform_keys! { |key| key.camelize(:lower) }
   }
-  let(:billing_address_firstname) { 'John' }
-  let(:shipping_address_firstname) { 'Jane' }
+  let(:billing_address_name) { 'John Von Doe' }
+  let(:shipping_address_name) { 'Jane Von Doe' }
   let(:mutation_variables) {
     Hash[
       input: {
-        billingAddress: address.merge(firstname: billing_address_firstname),
-        shippingAddress: address.merge(firstname: shipping_address_firstname)
+        billingAddress: address.merge(name: billing_address_name),
+        shippingAddress: address.merge(name: shipping_address_name)
       }
     ].tap do |variables|
       variables[:input][:shipToBillingAddress] = ship_to_billing_address if defined?(ship_to_billing_address)
@@ -62,16 +62,10 @@ RSpec.describe_mutation :add_addresses_to_checkout, mutation: :add_addresses_to_
       let(:response_order) { subject[:data][:addAddressesToCheckout][:order] }
 
       context 'with wrong arguments' do
-        let(:billing_address_firstname) { '' }
+        let(:billing_address_name) { '' }
 
         it { expect(response_order[:number]).to eq(current_order.number) }
-
-        if Gem::Requirement.new('>= 2.11.0.alpha').satisfied_by?(Spree.solidus_gem_version)
-          it { expect(user_errors.first[:path]).to eq(["input", "order", "billAddress", "name"]) }
-        else
-          it { expect(user_errors.first[:path]).to eq(["input", "order", "billAddress", "firstname"]) }
-        end
-
+        it { expect(user_errors.first[:path]).to eq(["input", "order", "billAddress", "name"]) }
         it { expect(user_errors.first[:message]).to eq("can't be blank") }
         it { is_expected.to_not have_key(:errors) }
       end
@@ -83,8 +77,8 @@ RSpec.describe_mutation :add_addresses_to_checkout, mutation: :add_addresses_to_
 
             it { expect(response_order[:number]).to eq(current_order.number) }
             it { expect(response_order[:state]).to eq('address') }
-            it { expect(response_order[:billingAddress][:firstname]).to eq(billing_address_firstname) }
-            it { expect(response_order[:shippingAddress][:firstname]).to eq(billing_address_firstname) }
+            it { expect(response_order[:billingAddress][:name]).to eq(billing_address_name) }
+            it { expect(response_order[:shippingAddress][:name]).to eq(billing_address_name) }
             it { expect(user_errors).to be_empty }
             it { is_expected.to_not have_key(:errors) }
           end
@@ -94,8 +88,8 @@ RSpec.describe_mutation :add_addresses_to_checkout, mutation: :add_addresses_to_
 
             it { expect(response_order[:number]).to eq(current_order.number) }
             it { expect(response_order[:state]).to eq('address') }
-            it { expect(response_order[:billingAddress][:firstname]).to eq(billing_address_firstname) }
-            it { expect(response_order[:shippingAddress][:firstname]).to eq(shipping_address_firstname) }
+            it { expect(response_order[:billingAddress][:name]).to eq(billing_address_name) }
+            it { expect(response_order[:shippingAddress][:name]).to eq(shipping_address_name) }
             it { expect(user_errors).to be_empty }
             it { is_expected.to_not have_key(:errors) }
           end
@@ -103,8 +97,8 @@ RSpec.describe_mutation :add_addresses_to_checkout, mutation: :add_addresses_to_
           describe 'is not present' do
             it { expect(response_order[:number]).to eq(current_order.number) }
             it { expect(response_order[:state]).to eq('address') }
-            it { expect(response_order[:billingAddress][:firstname]).to eq(billing_address_firstname) }
-            it { expect(response_order[:shippingAddress][:firstname]).to eq(shipping_address_firstname) }
+            it { expect(response_order[:billingAddress][:name]).to eq(billing_address_name) }
+            it { expect(response_order[:shippingAddress][:name]).to eq(shipping_address_name) }
             it { expect(user_errors).to be_empty }
             it { is_expected.to_not have_key(:errors) }
           end
